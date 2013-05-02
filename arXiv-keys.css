@@ -1,0 +1,29 @@
+/** arXiv-keys.css
+ *  (C) Leo C. Stein (leo.stein@gmail.com)
+ *  2013 May 2
+ *
+ *  This work is licensed as Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
+ *  For full details see http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
+ */
+
+#helpBox {
+  position: fixed;
+  overflow-y: auto;
+  right: 20px;
+  top: 20px;
+  z-index: 1000;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+  width: 280px;
+  padding: 5px;
+  background-color: #fff;
+  font-size: small;
+}
+
+#helpBox > table {border-collapse:collapse;}
+
+#helpBox > th,tr {text-align:left;border-bottom:dashed gray 1px;}
+
+#helpBox > th,td {padding:2px 10px;}
+
+.selected {outline:1px dashed;}
