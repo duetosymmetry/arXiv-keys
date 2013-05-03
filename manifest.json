@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "arXiv keys",
-  "description": "Adds navigation keys to the arXiv.",
-  "version": "0.9.0",
+  "description": "Adds keyboard navigation keys to the arXiv.",
+  "version": "0.9.1",
 
   "icons": {  "48": "icon48.png",
              "128": "icon128.png" },

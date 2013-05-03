@@ -44,6 +44,7 @@ function kEnt(displayChar, description) {
 var keyMap = {
   HELP:     new kEnt("?","Show/hide this help box"),
   SEARCH:   new kEnt("/","Focus the search box"),
+  USERPAGE: new kEnt("u","Go to user page"),
   PREVPAGE: new kEnt("[","List page: Previous abstracts page<br>Abstract page: Browse previous"),
   NEXTPAGE: new kEnt("]","List page: Next abstracts page<br>Abstract page: Browse next"),
   NEXTABS:  new kEnt("j","List page: Next abstract"),
@@ -104,6 +105,10 @@ function siteKeyHandler(event) {
     return false;
   };
 
+  // Go to user page
+  if (keyMap["USERPAGE"].match(c))
+    goUserPage();
+
   return;
 
 };
@@ -118,6 +123,10 @@ function toggleHelpBox() {
 
 function focusSearch() {
   document.getElementsByName("query")[0].focus();
+};
+
+function goUserPage() {
+  window.location = "/user/";
 };
 
 //////////////////////////////////////////////////////////////////////

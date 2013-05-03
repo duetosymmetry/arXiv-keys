@@ -8,6 +8,7 @@ Less clicking, more science! Now you can navigate the arXiv with the keyboard in
 On all pages:
 * `/`      Set focus to search bar
 * `?`      Show/hide short keyboard shortcut help
+* `u`      Go to user page
 
 On list pages:
 * `j`/`k`    Steps down/up through the abstracts
