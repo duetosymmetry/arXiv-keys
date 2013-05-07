@@ -29,6 +29,9 @@ function installSiteWide() {
   // Install key help box
   installKeyHelp();
 
+  // Install goto box
+  installGotoBox();
+
 };
 
 // Construct a key entry object, used both for testing keys
@@ -44,13 +47,14 @@ function kEnt(displayChar, description) {
 var keyMap = {
   HELP:     new kEnt("?","Show/hide this help box"),
   SEARCH:   new kEnt("/","Focus the search box"),
+  GOTO:     new kEnt("g","Go to arXiv&hellip;"),
   USERPAGE: new kEnt("u","Go to user page"),
-  PREVPAGE: new kEnt("[","List page: Previous abstracts page<br>Abstract page: Browse previous"),
-  NEXTPAGE: new kEnt("]","List page: Next abstracts page<br>Abstract page: Browse next"),
   NEXTABS:  new kEnt("j","List page: Next abstract"),
   PREVABS:  new kEnt("k","List page: Previous abstract"),
   OPENABS:  new kEnt("a/A","List page: Open abstract in current/new window"),
-  OPENPDF:  new kEnt("p/P","Open PDF in current/new window")
+  OPENPDF:  new kEnt("p/P","Open PDF in current/new window"),
+  PREVPAGE: new kEnt("[","List page: Previous abstracts page<br>Abstract page: Browse previous"),
+  NEXTPAGE: new kEnt("]","List page: Next abstracts page<br>Abstract page: Browse next")
 };
 
 function installKeyHelp() {
@@ -73,6 +77,222 @@ function installKeyHelp() {
 
 };
 
+var categories = [
+  "astro-ph",
+  "astro-ph.CO",
+  "astro-ph.EP",
+  "astro-ph.GA",
+  "astro-ph.HE",
+  "astro-ph.IM",
+  "astro-ph.SR",
+  "cond-mat",
+  "cond-mat.dis-nn",
+  "cond-mat.mtrl-sci",
+  "cond-mat.mes-hall",
+  "cond-mat.other",
+  "cond-mat.quant-gas",
+  "cond-mat.soft",
+  "cond-mat.stat-mech",
+  "cond-mat.str-el",
+  "cond-mat.supr-con",
+  "gr-qc",
+  "hep-ex",
+  "hep-lat",
+  "hep-ph",
+  "hep-th",
+  "math-ph",
+  "nlin",
+  "nlin.AO",
+  "nlin.CG",
+  "nlin.CD",
+  "nlin.SI",
+  "nlin.PS",
+  "nucl-ex",
+  "nucl-th",
+  "physics",
+  "physics.acc-ph",
+  "physics.ao-ph",
+  "physics.atom-ph",
+  "physics.atm-clus",
+  "physics.bio-ph",
+  "physics.chem-ph",
+  "physics.class-ph",
+  "physics.comp-ph",
+  "physics.data-an",
+  "physics.flu-dyn",
+  "physics.gen-ph",
+  "physics.geo-ph",
+  "physics.hist-ph",
+  "physics.ins-det",
+  "physics.med-ph",
+  "physics.optics",
+  "physics.ed-ph",
+  "physics.soc-ph",
+  "physics.plasm-ph",
+  "physics.pop-ph",
+  "physics.space-ph",
+  "quant-ph",
+  "math",
+  "math.AG",
+  "math.AT",
+  "math.AP",
+  "math.CT",
+  "math.CA",
+  "math.CO",
+  "math.AC",
+  "math.CV",
+  "math.DG",
+  "math.DS",
+  "math.FA",
+  "math.GM",
+  "math.GN",
+  "math.GT",
+  "math.GR",
+  "math.HO",
+  "math.IT",
+  "math.KT",
+  "math.LO",
+  "math.MP",
+  "math.MG",
+  "math.NT",
+  "math.NA",
+  "math.OA",
+  "math.OC",
+  "math.PR",
+  "math.QA",
+  "math.RT",
+  "math.RA",
+  "math.SP",
+  "math.ST",
+  "math.SG",
+  "cs",
+  "cs.AI",
+  "cs.CL",
+  "cs.CC",
+  "cs.CE",
+  "cs.CG",
+  "cs.GT",
+  "cs.CV",
+  "cs.CY",
+  "cs.CR",
+  "cs.DS",
+  "cs.DB",
+  "cs.DL",
+  "cs.DM",
+  "cs.DC",
+  "cs.ET",
+  "cs.FL",
+  "cs.GL",
+  "cs.GR",
+  "cs.AR",
+  "cs.HC",
+  "cs.IR",
+  "cs.IT",
+  "cs.LG",
+  "cs.LO",
+  "cs.MS",
+  "cs.MA",
+  "cs.MM",
+  "cs.NI",
+  "cs.NE",
+  "cs.NA",
+  "cs.OS",
+  "cs.OH",
+  "cs.PF",
+  "cs.PL",
+  "cs.RO",
+  "cs.SI",
+  "cs.SE",
+  "cs.SD",
+  "cs.SC",
+  "cs.SY",
+  "q-bio",
+  "q-bio.BM",
+  "q-bio.CB",
+  "q-bio.GN",
+  "q-bio.MN",
+  "q-bio.NC",
+  "q-bio.OT",
+  "q-bio.PE",
+  "q-bio.QM",
+  "q-bio.SC",
+  "q-bio.TO",
+  "q-fin",
+  "q-fin.CP",
+  "q-fin.GN",
+  "q-fin.PM",
+  "q-fin.PR",
+  "q-fin.RM",
+  "q-fin.ST",
+  "q-fin.TR",
+  "stat",
+  "stat.AP",
+  "stat.CO",
+  "stat.ML",
+  "stat.ME",
+  "stat.OT",
+  "stat.TH"
+];
+
+function installGotoBox() {
+
+  var gotoBox = document.createElement("div");
+  gotoBox.id = "gotoBox";
+
+  var innerHTML = '\
+<label for="gotoInput">\
+Type a category to go to, optionally followed by /new, /recent, or /current.<br>\
+</label>\
+<input id="gotoInput"/>';
+
+  // TODO Do more stuff here
+
+  gotoBox.innerHTML = innerHTML;
+
+  // Initially hidden
+  gotoBox.style.display = "none";
+
+  // Insert it into the document
+  document.body.appendChild(gotoBox);
+
+  // Use jQuery autocomplete widget
+  $("#gotoInput").autocomplete({
+
+    source: categories
+
+  });
+
+};
+
+function gotoInputHandler(event) {
+  console.log("gotoInput:");
+  console.log(event);
+
+  // TODO
+
+};
+
+function gotoKeyDown(event) {
+
+  if (event.keyCode == 27) { // ESC
+    hideGotoBox();
+  } else if (event.keyCode == 13) { // ENTER
+    gotoTryNavigate();
+  } else if (event.keyCode == 38) { // UP
+    // TODO
+  } else if (event.keyCode == 40) { // DOWN
+    // TODO
+  };
+
+  return;
+
+};
+
+function gotoTryNavigate() {
+  // TODO
+
+};
+
 function ignoreKeyboard(tag) {
   switch (tag.tagName.toLowerCase()) {
   case "select":
@@ -92,9 +312,18 @@ function siteKeyHandler(event) {
 
   var c = String.fromCharCode(event.keyCode);
 
-  // Help box
+  // Toggle help box
   if (keyMap["HELP"].match(c))
     toggleHelpBox();
+
+  // Show goto box
+  if (keyMap["GOTO"].match(c)) {
+    showGotoBox();
+    // Have to stop the event from propagating now
+    event.preventDefault();
+    event.stopPropagation;
+    return false;
+  };
 
   // Focus search box.
   if (keyMap["SEARCH"].match(c)) {
@@ -113,12 +342,26 @@ function siteKeyHandler(event) {
 
 };
 
-function toggleHelpBox() {
-  var helpBox = document.getElementById("helpBox");
+function toggleElement(idStr) {
+  var el = document.getElementById(idStr);
 
-  if (helpBox.style.display == "none")
-    helpBox.style.display = "block";
-  else helpBox.style.display = "none";
+  if (el.style.display == "none")
+    el.style.display = "block";
+  else el.style.display = "none";
+};
+
+function toggleHelpBox() {
+  toggleElement("helpBox");
+};
+
+function showGotoBox() {
+  document.getElementById("gotoInput").value = "";
+  document.getElementById("gotoBox").style.display = "block";
+  document.getElementById("gotoInput").focus();
+};
+
+function hideGotoBox() {
+  document.getElementById("gotoBox").style.display = "none";
 };
 
 function focusSearch() {

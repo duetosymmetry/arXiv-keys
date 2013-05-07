@@ -3,7 +3,7 @@
 
   "name": "arXiv keys",
   "description": "Adds keyboard navigation keys to the arXiv.",
-  "version": "0.9.1",
+  "version": "0.9.2",
 
   "icons": {  "48": "icon48.png",
              "128": "icon128.png" },
@@ -17,8 +17,8 @@
                   "http://xxx.lanl.gov/*",
                   "https://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
-      "css":     ["arXiv-keys.css"],
-      "js":      ["arXiv-keys.js"]
+      "css":     ["blitzer.css","arXiv-keys.css"],
+      "js":      ["jquery-2.0.0.min.js","jquery-ui-git.js","arXiv-keys.js"]
     }
   ]
 }

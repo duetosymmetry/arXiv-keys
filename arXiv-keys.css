@@ -27,3 +27,18 @@
 #helpBox > th,td {padding:2px 10px;}
 
 .selected {outline:1px dashed;}
+
+#gotoBox {
+  position: fixed;
+  top: 175px;
+  /* TODO There must be a better way of centering, right? */
+  left: 50%;
+  margin-left: -150px; /* half of width */
+  /* z-index: 1000; */
+  border: 2px solid;
+  border-radius: 5px;
+  width: 300px;
+  padding: 5px;
+  background-color: #fff;
+  font-size: small;
+}
