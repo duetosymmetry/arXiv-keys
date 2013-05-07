@@ -88,8 +88,6 @@ Type a category to go to, optionally followed by /new, /recent, or /current.<br>
 </label>\
 <input id="gotoInput"/>';
 
-  // TODO Do more stuff here
-
   gotoBox.innerHTML = innerHTML;
 
   // Initially hidden
@@ -101,18 +99,50 @@ Type a category to go to, optionally followed by /new, /recent, or /current.<br>
   // Use jQuery autocomplete widget
   $("#gotoInput").autocomplete({
 
-    source: categories
+    source: gotoSource,
+    select: gotoSelect
 
   });
 
 };
 
-function gotoInputHandler(event) {
-  console.log("gotoInput:");
-  console.log(event);
+function gotoSource( request, response ) {
 
+  // Approach: If the request has no '/' character in it, then match it against a category.
+  // If it does have a '/' character, then:
+  //   if the part before the '/' is a valid category,
+  //   then match against <cat>/new, <cat>/recent, <cat>/current
+
+  var slashInd = request.term.indexOf('/');
+  var hasSlash = (slashInd != -1);
+
+  if (!hasSlash) {
+    var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+    response( $.grep( categories, function( item ){
+      return matcher.test( item );
+    }) );
+  } else {
+    var cat = request.term.substring(0,slashInd);
+    if ($.inArray(cat, categories) != -1) { // It is a valid category
+      var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+      response( $.grep( catEndings(cat), function( item ){
+        return matcher.test( item );
+      }) );
+    } else { // invalid category
+      response();
+    };
+  };
+};
+
+// Returns a category with the possible endings
+function catEndings(cat) {
+  return [ cat + '/new',
+           cat + '/recent',
+           cat + '/current' ];
+};
+
+function gotoSelect(event, ui) {
   // TODO
-
 };
 
 function gotoKeyDown(event) {
@@ -128,11 +158,6 @@ function gotoKeyDown(event) {
   };
 
   return;
-
-};
-
-function gotoTryNavigate() {
-  // TODO
 
 };
 
