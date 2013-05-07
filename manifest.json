@@ -18,7 +18,8 @@
                   "https://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
       "css":     ["blitzer.css","arXiv-keys.css"],
-      "js":      ["jquery-2.0.0.min.js","jquery-ui-git.js","arXiv-keys.js"]
+      "js":      ["jquery-2.0.0.min.js","jquery-ui-git.js",
+                  "categories.js","arXiv-keys.js"]
     }
   ]
 }
