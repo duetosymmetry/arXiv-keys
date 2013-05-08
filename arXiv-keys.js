@@ -1,6 +1,6 @@
 // arXiv-keys.js
 // (C) Leo C. Stein (leo.stein@gmail.com)
-// 2013 May 2
+// 2013 May
 //
 // This work is licensed as Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
 // For full details see http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
@@ -47,7 +47,7 @@ function kEnt(displayChar, description) {
 var keyMap = {
   HELP:     new kEnt("?","Show/hide this help box"),
   SEARCH:   new kEnt("/","Focus the search box"),
-  GOTO:     new kEnt("g","Go to arXiv&hellip;"),
+  GOTO:     new kEnt("g","Go to category&hellip;"),
   USERPAGE: new kEnt("u","Go to user page"),
   NEXTABS:  new kEnt("j","List page: Next abstract"),
   PREVABS:  new kEnt("k","List page: Previous abstract"),
@@ -77,16 +77,21 @@ function installKeyHelp() {
 
 };
 
+var gotoBox, gotoInput;
+
 function installGotoBox() {
 
-  var gotoBox = document.createElement("div");
+  gotoBox = document.createElement("div");
   gotoBox.id = "gotoBox";
 
   var innerHTML = '\
 <label for="gotoInput">\
 Type a category to go to, optionally followed by /new, /recent, or /current.<br>\
 </label>\
-<input id="gotoInput"/>';
+<input id="gotoInput"/>\
+<div id="gotoError">\
+Invalid category!\
+</div>';
 
   gotoBox.innerHTML = innerHTML;
 
@@ -96,17 +101,21 @@ Type a category to go to, optionally followed by /new, /recent, or /current.<br>
   // Insert it into the document
   document.body.appendChild(gotoBox);
 
+  gotoInput = $("#gotoInput");
+
+  // Note: it is important that this is registered first,
+  // so that gotoKeyDown can tell if the menu is open
+  // *before* the autocomplete widget hides it.
+  gotoInput.on("keydown", gotoKeyDown);
+
   // Use jQuery autocomplete widget
-  $("#gotoInput").autocomplete({
-
-    source: gotoSource,
-    select: gotoSelect
-
+  gotoInput.autocomplete({
+    source: gotoCompletions
   });
 
 };
 
-function gotoSource( request, response ) {
+function gotoCompletions( request, response ) {
 
   // Approach: If the request has no '/' character in it, then match it against a category.
   // If it does have a '/' character, then:
@@ -141,20 +150,19 @@ function catEndings(cat) {
            cat + '/current' ];
 };
 
-function gotoSelect(event, ui) {
-  // TODO
-};
 
 function gotoKeyDown(event) {
 
-  if (event.keyCode == 27) { // ESC
+  var menuOpen = gotoInput.autocomplete( "widget" ).is(":visible");
+
+  // Don't do anything if the menu is open and there is an item selected
+  if (menuOpen && ($(".ui-state-focus").length != 0))
+    return;
+
+  if ((event.keyCode == 27) && !menuOpen) { // ESC
     hideGotoBox();
   } else if (event.keyCode == 13) { // ENTER
     gotoTryNavigate();
-  } else if (event.keyCode == 38) { // UP
-    // TODO
-  } else if (event.keyCode == 40) { // DOWN
-    // TODO
   };
 
   return;
@@ -223,13 +231,54 @@ function toggleHelpBox() {
 };
 
 function showGotoBox() {
-  document.getElementById("gotoInput").value = "";
-  document.getElementById("gotoBox").style.display = "block";
-  document.getElementById("gotoInput").focus();
+  $("#gotoError").hide();
+  gotoInput.val("");
+  gotoBox.style.display = "block";
+  gotoInput.focus();
 };
 
 function hideGotoBox() {
-  document.getElementById("gotoBox").style.display = "none";
+  gotoBox.style.display = "none";
+  gotoInput.blur();
+  document.body.focus();
+};
+
+function gotoTryNavigate() {
+  if (isGotoInputValid()) {
+
+    var splitInput = gotoInput.val().split("/");
+
+    // If there is no slash, or there is nothing after the slash, go to /new
+    if ((splitInput.length == 1) ||
+        ((splitInput.length == 2) && (splitInput[1] == "")))
+      splitInput = [ splitInput[0], "new" ];
+
+    window.location = "/list/" + splitInput[0] + "/" + splitInput[1];
+
+  } else {
+    $("#gotoError").show();
+  };
+};
+
+function isGotoInputValid() {
+  // The gotoInput must either be the name of a category, or
+  // <cat>/, <cat>/new, <cat>/recent, or <cat>/current
+
+  var splitInput = gotoInput.val().split("/");
+
+  if (splitInput.length > 2 || splitInput.length == 0)
+    return false;
+
+  if ($.inArray(splitInput[0], categories) == -1)
+    return false;
+
+  if (splitInput.length == 1)
+    return true;
+
+  // Only get here if splitInput.length == 2 and splitInput[0] is a valid cat
+  return (splitInput[1] == '') || (splitInput[1] == 'new')
+         || (splitInput[1] == 'recent') || (splitInput[1] == 'current');
+
 };
 
 function focusSearch() {
@@ -248,7 +297,7 @@ function installAbsMode() {
 
   // Install key handlers
   document.body.onkeypress = absKeyHandler;
-  
+
 };
 
 function absKeyHandler(event) {
@@ -258,7 +307,7 @@ function absKeyHandler(event) {
     return;
 
   var c = String.fromCharCode(event.keyCode);
-  
+
   // Open PDF
   if (keyMap["OPENPDF"].match(c))
     absOpenPDF(event.shiftKey);
@@ -393,7 +442,10 @@ function listKeyHandler(event) {
 };
 
 function getSelectedLinks() {
-  return document.getElementsByName("item" + (selectedItem+1))[0].parentNode.getElementsByTagName("a");
+  var theItems = document.getElementsByName("item" + (selectedItem+1));
+  if (theItems.length > 0)
+    return theItems[0].parentNode.getElementsByTagName("a");
+  else return [];
 };
 
 function getSelLinkTitle(title) {
@@ -426,7 +478,7 @@ function goDown() {
 
 function goUp() {
   if(selectedItem > 0)
-    setSelected(selectedItem - 1, true);  
+    setSelected(selectedItem - 1, true);
 };
 
 function curPageElement() {

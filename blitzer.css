@@ -816,7 +816,8 @@ body .ui-tooltip {
 }
 .ui-widget-header {
 	border: 1px solid #e3a1a1;
-	background: #cc0000 url(images/ui-bg_highlight-soft_15_cc0000_1x100.png) 50% 50% repeat-x;
+  /* LEO edited the following line */
+	background: #cc0000; /* url(images/ui-bg_highlight-soft_15_cc0000_1x100.png) 50% 50% repeat-x; */
 	color: #ffffff;
 	font-weight: bold;
 }
@@ -830,7 +831,8 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
 	border: 1px solid #d8dcdf;
-	background: #eeeeee url(images/ui-bg_highlight-hard_100_eeeeee_1x100.png) 50% 50% repeat-x;
+  /* LEO edited the following line */
+	background: #eeeeee; /* url(images/ui-bg_highlight-hard_100_eeeeee_1x100.png) 50% 50% repeat-x; */
 	font-weight: bold;
 	color: #004276;
 }
@@ -847,7 +849,8 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
 	border: 1px solid #cdd5da;
-	background: #f6f6f6 url(images/ui-bg_highlight-hard_100_f6f6f6_1x100.png) 50% 50% repeat-x;
+  /* LEO edited the following line */
+	background: #f6f6f6; /* url(images/ui-bg_highlight-hard_100_f6f6f6_1x100.png) 50% 50% repeat-x; */
 	font-weight: bold;
 	color: #111111;
 }
@@ -862,7 +865,8 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
 	border: 1px solid #eeeeee;
-	background: #ffffff url(images/ui-bg_flat_65_ffffff_40x100.png) 50% 50% repeat-x;
+  /* LEO edited the following line */
+	background: #ffffff; /* url(images/ui-bg_flat_65_ffffff_40x100.png) 50% 50% repeat-x; */
 	font-weight: bold;
 	color: #cc0000;
 }
@@ -879,7 +883,8 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
 	border: 1px solid #fcd3a1;
-	background: #fbf8ee url(images/ui-bg_glass_55_fbf8ee_1x400.png) 50% 50% repeat-x;
+  /* LEO edited the following line */
+	background: #fbf8ee; /* url(images/ui-bg_glass_55_fbf8ee_1x400.png) 50% 50% repeat-x; */
 	color: #444444;
 }
 .ui-state-highlight a,
@@ -891,7 +896,8 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
 	border: 1px solid #cc0000;
-	background: #f3d8d8 url(images/ui-bg_diagonals-thick_75_f3d8d8_40x40.png) 50% 50% repeat;
+  /* LEO edited the following line */
+	background: #f3d8d8 /* url(images/ui-bg_diagonals-thick_75_f3d8d8_40x40.png) 50% 50% repeat; */
 	color: #2e2e2e;
 }
 .ui-state-error a,
