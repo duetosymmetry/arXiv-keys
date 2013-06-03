@@ -245,6 +245,15 @@ function installListMode() {
   // Install key handlers
   document.body.onkeypress = listKeyHandler;
 
+  // Add click handlers
+  var makeSelect = function(I) {
+    return function() { setSelected(I, false); };
+  };
+
+  for (var i=0; i < items.length; i++) {
+    items[i].onclick = makeSelect(i);
+  };
+
   // Make the first one be selected
   setSelected(0,false);
 };
