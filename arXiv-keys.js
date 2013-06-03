@@ -266,7 +266,7 @@ function setSelected(i, doScroll) {
 
   if (doScroll) {
     // The name of the anchor is item<i+1>.
-    document.getElementsByName("item" + (i+1))[0].scrollIntoViewIfNeeded();
+    items[i].scrollIntoViewIfNeeded();
   };
 
 };
