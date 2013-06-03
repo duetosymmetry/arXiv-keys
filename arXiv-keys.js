@@ -83,6 +83,7 @@ function ignoreKeyboard(tag) {
   switch (tag.tagName.toLowerCase()) {
   case "select":
   case "input":
+  case "textarea":
     return true;
   default:
     return false;
