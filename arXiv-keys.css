@@ -28,7 +28,7 @@
 
 #helpBox > th,td {padding:2px 10px;}
 
-.selected {outline:1px dashed;}
+.selected {outline:1px dashed; background-color: #dadaff;}
 
 #gotoBox {
   position: fixed;
