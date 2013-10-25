@@ -3,23 +3,52 @@
 
   "name": "arXiv keys",
   "description": "Adds keyboard navigation keys to the arXiv.",
-  "version": "0.9.2.2",
+  "version": "0.9.2.3",
 
   "icons": {  "48": "icon48.png",
              "128": "icon128.png" },
 
   "content_scripts": [
     {
-      "matches": ["http://arxiv.org/*",
-                  "https://arxiv.org/*",
-                  "http://*.arxiv.org/*",
-                  "https://*.arxiv.org/*",
-                  "http://xxx.lanl.gov/*",
-                  "https://xxx.lanl.gov/*"],
+      "matches": ["*://arxiv.org/*",
+                  "*://*.arxiv.org/*",
+                  "*://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
       "css":     ["blitzer.css","arXiv-keys.css"],
       "js":      ["jquery-2.0.0.min.js","jquery-ui-git.js",
                   "categories.js","goto-box.js","arXiv-keys.js"]
+    },
+    {
+      "matches": ["*://arxiv.org/*",
+                  "*://*.arxiv.org/*",
+                  "*://xxx.lanl.gov/*"],
+      "exclude_matches": ["*://*/*.pdf"],
+      "include_globs": ["http://*/abs/*"],
+      "js":      ["abs.js"]
+    },
+    {
+      "matches": ["*://arxiv.org/*",
+                  "*://*.arxiv.org/*",
+                  "*://xxx.lanl.gov/*"],
+      "exclude_matches": ["*://*/*.pdf"],
+      "include_globs": ["http://*/list*"],
+      "js":      ["list-find-items.js","list.js"]
+    },
+    {
+      "matches": ["*://arxiv.org/*",
+                  "*://*.arxiv.org/*",
+                  "*://xxx.lanl.gov/*"],
+      "exclude_matches": ["*://*/*.pdf"],
+      "include_globs": ["http://*/find/*"],
+      "js":      ["list-find-items.js","find.js"]
+    },
+    {
+      "matches": ["*://arxiv.org/*",
+                  "*://*.arxiv.org/*",
+                  "*://xxx.lanl.gov/*"],
+      "exclude_matches": ["*://*/*.pdf"],
+      "include_globs": ["http://*/catchup*"],
+      "js":      ["list-find-items.js"]
     }
   ]
 }
