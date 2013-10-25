@@ -45,9 +45,14 @@
   font-size: small;
 }
 
+#gotoBox > label {
+  text-align: left;
+}
+
 #gotoInput {
   float: left;
   margin: 5px 2px;
+  border: 2px inset;
 }
 
 #gotoError {
