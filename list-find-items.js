@@ -80,8 +80,6 @@ function goUp() {
 
 ////////////////////////////////////////////////////////////
 
-function installListFindMode() {
-
   // Get the items
   items = document.getElementsByClassName("meta");
 
@@ -102,6 +100,3 @@ function installListFindMode() {
 
   // Make the first one be selected
   setSelected(0,false);
-};
-
-installListFindMode();

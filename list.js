@@ -35,12 +35,6 @@ function goNextPage() {
 
 ////////////////////////////////////////////////////////////
 
-function installListMode() {
-
   // Install key handlers
   keyMap["PREVPAGE"].act = goPrevPage;
   keyMap["NEXTPAGE"].act = goNextPage;
-
-};
-
-installListMode();
