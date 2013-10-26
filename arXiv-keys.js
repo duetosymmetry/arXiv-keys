@@ -7,19 +7,7 @@
 // This work is licensed as Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
 // For full details see http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
-function installSiteWide() {
 
-  // Install key handlers
-  // This will be overridden in Abs and List modes
-  document.body.onkeypress = siteKeyHandler;
-
-  // Install key help box
-  installKeyHelp();
-
-  // Install goto box
-  installGotoBox();
-
-};
 
 // Construct a key entry object, used both for testing keys
 // and for displaying help. The first character of displayChar
@@ -142,4 +130,13 @@ function followLinkEl(el) {
 // Run the thing.
 //////////////////////////////////////////////////////////////////////
 
-installSiteWide();
+  // Install key handlers
+  // This will be overridden in Abs and List modes
+  document.body.onkeypress = siteKeyHandler;
+
+  // Install key help box
+  installKeyHelp();
+
+  // Install goto box
+  installGotoBox();
+
