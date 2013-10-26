@@ -7,43 +7,16 @@
 // This work is licensed as Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
 // For full details see http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
+// Module export gotoBox
+// exports:
+//   function showGotoBox()
+var gotoBox = (function($){
+
+  var my = {};
+
+////////////////////////////////////////////////////////////
+
 var gotoBox, gotoInput;
-
-function installGotoBox() {
-
-  gotoBox = document.createElement("div");
-  gotoBox.id = "gotoBox";
-
-  var innerHTML = '\
-<label for="gotoInput">\
-Type a category to go to, optionally followed by /new, /recent, or /current.<br>\
-</label>\
-<input id="gotoInput"/>\
-<div id="gotoError">\
-Invalid category!\
-</div>';
-
-  gotoBox.innerHTML = innerHTML;
-
-  // Initially hidden
-  gotoBox.style.display = "none";
-
-  // Insert it into the document
-  document.body.appendChild(gotoBox);
-
-  gotoInput = $("#gotoInput");
-
-  // Note: it is important that this is registered first,
-  // so that gotoKeyDown can tell if the menu is open
-  // *before* the autocomplete widget hides it.
-  gotoInput.on("keydown", gotoKeyDown);
-
-  // Use jQuery autocomplete widget
-  gotoInput.autocomplete({
-    source: gotoCompletions
-  });
-
-};
 
 function gotoCompletions( request, response ) {
 
@@ -98,6 +71,7 @@ function gotoKeyDown(event) {
 
 };
 
+my.showGotoBox =
 function showGotoBox() {
   $("#gotoError").hide();
   gotoInput.val("");
@@ -148,3 +122,46 @@ function isGotoInputValid() {
          || (splitInput[1] == 'recent') || (splitInput[1] == 'current');
 
 };
+
+////////////////////////////////////////////////////////////
+// install goto box
+////////////////////////////////////////////////////////////
+
+  gotoBox = document.createElement("div");
+  gotoBox.id = "gotoBox";
+
+  var innerHTML = '\
+<label for="gotoInput">\
+Type a category to go to, optionally followed by /new, /recent, or /current.<br>\
+</label>\
+<input id="gotoInput"/>\
+<div id="gotoError">\
+Invalid category!\
+</div>';
+
+  gotoBox.innerHTML = innerHTML;
+
+  // Initially hidden
+  gotoBox.style.display = "none";
+
+  // Insert it into the document
+  document.body.appendChild(gotoBox);
+
+  gotoInput = $("#gotoInput");
+
+  // Note: it is important that this is registered first,
+  // so that gotoKeyDown can tell if the menu is open
+  // *before* the autocomplete widget hides it.
+  gotoInput.on("keydown", gotoKeyDown);
+
+  // Use jQuery autocomplete widget
+  gotoInput.autocomplete({
+    source: gotoCompletions
+  });
+
+////////////////////////////////////////////////////////////
+
+  // export module definitions
+  return my;
+
+}(jQuery));

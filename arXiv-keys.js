@@ -29,7 +29,7 @@ function kEnt(displayChar, description, act) {
 my.keyMap = {
   HELP:     new kEnt("?","Show/hide this help box", toggleHelpBox),
   SEARCH:   new kEnt("/","Focus the search box",    focusSearch),
-  GOTO:     new kEnt("g","Go to category&hellip;",  showGotoBox),
+  GOTO:     new kEnt("g","Go to category&hellip;",  gotoBox.showGotoBox),
   USERPAGE: new kEnt("u","Go to user page",         goUserPage),
   NEXTABS:  new kEnt("j","List page: Next abstract"),
   PREVABS:  new kEnt("k","List page: Previous abstract"),
@@ -132,7 +132,7 @@ function followLinkEl(el) {
 };
 
 //////////////////////////////////////////////////////////////////////
-// Run the thing.
+// Install
 //////////////////////////////////////////////////////////////////////
 
   // Install key handlers
@@ -142,8 +142,6 @@ function followLinkEl(el) {
   // Install key help box
   installKeyHelp();
 
-  // Install goto box
-  installGotoBox();
 
 ////////////////////////////////////////////////////////////
 
