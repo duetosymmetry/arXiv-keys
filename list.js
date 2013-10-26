@@ -12,6 +12,8 @@
 // /list/ specific code
 //////////////////////////////////////////////////////////////////////
 
+// Keep the namespace clean. Nothing to export.
+(function(){
 function curPageElement() {
   return document.getElementsByTagName("small")[0]
     .getElementsByTagName("b")[0];
@@ -38,3 +40,5 @@ function goNextPage() {
   // Install key handlers
   arXivKeys.keyMap["PREVPAGE"].act = goPrevPage;
   arXivKeys.keyMap["NEXTPAGE"].act = goNextPage;
+
+}());

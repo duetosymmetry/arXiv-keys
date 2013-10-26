@@ -12,6 +12,9 @@
 // Items on /list/ and /find/ pages
 //////////////////////////////////////////////////////////////////////
 
+// Keep the namespace clean. Nothing to export.
+(function(){
+
 var items;
 var selectedItem = 0;
 
@@ -100,3 +103,5 @@ function goUp() {
 
   // Make the first one be selected
   setSelected(0,false);
+
+}());

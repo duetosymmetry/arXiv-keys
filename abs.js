@@ -11,6 +11,9 @@
 // /abs/ pages
 //////////////////////////////////////////////////////////////////////
 
+// Keep the namespace clean. Nothing to export.
+(function(){
+
 function getPDFLink() {
   var sidebarLinks = document.getElementsByClassName("full-text")[0].getElementsByTagName("a");
   for (var i = 0; i < sidebarLinks.length; i++)
@@ -53,3 +56,5 @@ function goNextPage(isShifted) {
 arXivKeys.keyMap["OPENPDF"].act  = openPDF;
 arXivKeys.keyMap["PREVPAGE"].act = goPrevPage;
 arXivKeys.keyMap["NEXTPAGE"].act = goNextPage;
+
+}());

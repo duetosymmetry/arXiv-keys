@@ -12,6 +12,9 @@
 // /find/ specific code
 //////////////////////////////////////////////////////////////////////
 
+// Keep the namespace clean. Nothing to export.
+(function(){
+
 // Unfortunately, I have to get state by parsing the DOM tree.
 // dlpage is non-null if we have a list of results
 var dlpage   = document.getElementById("dlpage");
@@ -62,3 +65,5 @@ function goNextPage() {
 // Install key handlers
 arXivKeys.keyMap["PREVPAGE"].act = goPrevPage;
 arXivKeys.keyMap["NEXTPAGE"].act = goNextPage;
+
+}());
