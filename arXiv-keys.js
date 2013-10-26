@@ -139,13 +139,12 @@ function followLinkEl(el) {
 // Install
 //////////////////////////////////////////////////////////////////////
 
-  // Install key handlers
-  // This will be overridden in Abs and List modes
-  document.body.onkeypress = siteKeyHandler;
-
   // Install key help box
   installKeyHelp();
 
+  // Install key handlers
+  // This will be overridden in Abs and List modes
+  document.body.onkeypress = siteKeyHandler;
 
 ////////////////////////////////////////////////////////////
 
