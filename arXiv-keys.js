@@ -8,6 +8,10 @@
 // For full details see http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
 // Module export arXivKeys
+// exports:
+//   var keyMap
+//   function openURL(url, inNewWin)
+//   function followLinkEl(el)
 var arXivKeys = (function($){
 
   var my = {};
