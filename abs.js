@@ -14,27 +14,21 @@
 // Keep the namespace clean. Nothing to export.
 (function(){
 
-function getPDFLink() {
+  var PDFLink = null;
   var sidebarLinks = document.getElementsByClassName("full-text")[0].getElementsByTagName("a");
   for (var i = 0; i < sidebarLinks.length; i++)
     if (sidebarLinks[i].accessKey == "f")
-      return sidebarLinks[i];
-
-  return null;
-};
+      PDFLink = sidebarLinks[i];
 
 function openPDF(inNewWin) {
-  var PDFLink = getPDFLink();
   if (PDFLink)
     arXivKeys.openURL(PDFLink.href, inNewWin);
 };
 
-function browseLinks() {
-  return document.getElementsByClassName("prevnext")[0].getElementsByTagName("a");
-};
+var links = document.getElementsByClassName("prevnext")[0]
+    .getElementsByTagName("a");
 
 function getBrowseLinksKey(key) {
-  var links = browseLinks();
   for (var i = 0; i < links.length; i++)
     if (links[i].accessKey == key)
       return links[i];
