@@ -39,7 +39,7 @@
                   "*://*.arxiv.org/*",
                   "*://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
-      "include_globs": ["http://*/find/*"],
+      "include_globs": ["http://*/find*"],
       "js":      ["list-find-items.js","find.js"]
     },
     {
