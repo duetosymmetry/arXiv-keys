@@ -7,7 +7,10 @@
 // This work is licensed as Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
 // For full details see http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 
+// Module export arXivKeys
+var arXivKeys = (function($){
 
+  var my = {};
 
 // Construct a key entry object, used both for testing keys
 // and for displaying help. The first character of displayChar
@@ -23,7 +26,7 @@ function kEnt(displayChar, description, act) {
              function( isShifted ){ return true; };
 };
 
-var keyMap = {
+my.keyMap = {
   HELP:     new kEnt("?","Show/hide this help box", toggleHelpBox),
   SEARCH:   new kEnt("/","Focus the search box",    focusSearch),
   GOTO:     new kEnt("g","Go to category&hellip;",  showGotoBox),
@@ -43,8 +46,8 @@ function installKeyHelp() {
   helpBox.id = "helpBox";
 
   var innerHTML = "<table><thead><tr><th>Key</th><th>Function</th></tr></thead><tbody>";
-  for (var key in keyMap)
-    innerHTML += keyMap[key].rowEntry();
+  for (var key in my.keyMap)
+    innerHTML += my.keyMap[key].rowEntry();
   innerHTML += "</tbody></table>";
   helpBox.innerHTML = innerHTML;
 
@@ -78,9 +81,9 @@ function siteKeyHandler(event) {
   var isShifted = event.shiftKey;
 
   // Step through the key map and find a match
-  for (var k in keyMap) {
-    if (keyMap[k].match(c)) {
-      keyMap[k].act(isShifted);
+  for (var k in my.keyMap) {
+    if (my.keyMap[k].match(c)) {
+      my.keyMap[k].act(isShifted);
       // Have to stop the event from propagating now
       event.preventDefault();
       event.stopPropagation;
@@ -93,6 +96,7 @@ function siteKeyHandler(event) {
 
 };
 
+my.openURL =
 function openURL(url, inNewWin) {
   if(inNewWin) {
     var newWin = window.open(url, '_blank');
@@ -121,6 +125,7 @@ function goUserPage(isShifted) {
   window.location = "/user/";
 };
 
+my.followLinkEl =
 function followLinkEl(el) {
   if (el)
     el.click();
@@ -140,3 +145,9 @@ function followLinkEl(el) {
   // Install goto box
   installGotoBox();
 
+////////////////////////////////////////////////////////////
+
+  // export module definitions
+  return my;
+
+}(jQuery));

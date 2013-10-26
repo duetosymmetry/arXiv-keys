@@ -50,15 +50,15 @@ else
 };
 
 function goPrevPage() {
-  followLinkEl(prevLink);
+  arXivKeys.followLinkEl(prevLink);
 };
 
 function goNextPage() {
-  followLinkEl(nextLink);
+  arXivKeys.followLinkEl(nextLink);
 };
 
 ////////////////////////////////////////////////////////////
 
 // Install key handlers
-keyMap["PREVPAGE"].act = goPrevPage;
-keyMap["NEXTPAGE"].act = goNextPage;
+arXivKeys.keyMap["PREVPAGE"].act = goPrevPage;
+arXivKeys.keyMap["NEXTPAGE"].act = goNextPage;

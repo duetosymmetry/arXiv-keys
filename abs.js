@@ -23,7 +23,7 @@ function getPDFLink() {
 function openPDF(inNewWin) {
   var PDFLink = getPDFLink();
   if (PDFLink)
-    openURL(PDFLink.href, inNewWin);
+    arXivKeys.openURL(PDFLink.href, inNewWin);
 };
 
 function browseLinks() {
@@ -40,16 +40,16 @@ function getBrowseLinksKey(key) {
 };
 
 function goPrevPage(isShifted) {
-  followLinkEl(getBrowseLinksKey('p'));
+  arXivKeys.followLinkEl(getBrowseLinksKey('p'));
 };
 
 function goNextPage(isShifted) {
-  followLinkEl(getBrowseLinksKey('n'));
+  arXivKeys.followLinkEl(getBrowseLinksKey('n'));
 };
 
 ////////////////////////////////////////////////////////////
 
 // Install key handlers
-keyMap["OPENPDF"].act  = openPDF;
-keyMap["PREVPAGE"].act = goPrevPage;
-keyMap["NEXTPAGE"].act = goNextPage;
+arXivKeys.keyMap["OPENPDF"].act  = openPDF;
+arXivKeys.keyMap["PREVPAGE"].act = goPrevPage;
+arXivKeys.keyMap["NEXTPAGE"].act = goNextPage;

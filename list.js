@@ -26,15 +26,15 @@ function nextPageElement() {
 };
 
 function goPrevPage() {
-  followLinkEl(prevPageElement());
+  arXivKeys.followLinkEl(prevPageElement());
 };
 
 function goNextPage() {
-  followLinkEl(nextPageElement());
+  arXivKeys.followLinkEl(nextPageElement());
 };
 
 ////////////////////////////////////////////////////////////
 
   // Install key handlers
-  keyMap["PREVPAGE"].act = goPrevPage;
-  keyMap["NEXTPAGE"].act = goNextPage;
+  arXivKeys.keyMap["PREVPAGE"].act = goPrevPage;
+  arXivKeys.keyMap["NEXTPAGE"].act = goNextPage;

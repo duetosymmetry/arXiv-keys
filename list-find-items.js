@@ -57,7 +57,7 @@ function getSelLinkTitle(title) {
 function openTitleLink(title,inNewWin) {
   var link = getSelLinkTitle(title);
   if (link)
-    openURL(link.href, inNewWin);
+    arXivKeys.openURL(link.href, inNewWin);
 };
 
 function openAbstract(inNewWin) {
@@ -84,10 +84,10 @@ function goUp() {
   items = document.getElementsByClassName("meta");
 
   // Install key handlers
-  keyMap["NEXTABS"].act  = goDown;
-  keyMap["PREVABS"].act  = goUp;
-  keyMap["OPENABS"].act  = openAbstract;
-  keyMap["OPENPDF"].act  = openPDF;
+  arXivKeys.keyMap["NEXTABS"].act  = goDown;
+  arXivKeys.keyMap["PREVABS"].act  = goUp;
+  arXivKeys.keyMap["OPENABS"].act  = openAbstract;
+  arXivKeys.keyMap["OPENPDF"].act  = openPDF;
 
   // Add click handlers
   var makeSelect = function(I) {
