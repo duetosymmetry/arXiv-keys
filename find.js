@@ -20,11 +20,7 @@
 var dlpage   = document.getElementById("dlpage");
 var prevLink = null, nextLink = null;
 
-if (dlpage === null)
-{
-  // Nothing to do
-}
-else
+if (dlpage !== null)
 {
   // There are four options:
   // 1. All the results are on one page, no next link, no prev link.
