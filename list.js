@@ -14,25 +14,20 @@
 
 // Keep the namespace clean. Nothing to export.
 (function(){
-function curPageElement() {
-  return document.getElementsByTagName("small")[0]
+
+  var curPageElement =
+    document.getElementsByTagName("small")[0]
     .getElementsByTagName("b")[0];
-};
 
-function prevPageElement() {
-  return curPageElement().previousElementSibling;
-};
-
-function nextPageElement() {
-  return curPageElement().nextElementSibling;
-};
+  var prevPageElement = curPageElement.previousElementSibling;
+  var nextPageElement = curPageElement.nextElementSibling;
 
 function goPrevPage() {
-  arXivKeys.followLinkEl(prevPageElement());
+  arXivKeys.followLinkEl(prevPageElement);
 };
 
 function goNextPage() {
-  arXivKeys.followLinkEl(nextPageElement());
+  arXivKeys.followLinkEl(nextPageElement);
 };
 
 ////////////////////////////////////////////////////////////
