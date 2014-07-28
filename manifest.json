@@ -51,7 +51,7 @@
                   "*://arxiv-web3.library.cornell.edu/*",
                   "*://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
-      "include_globs": ["http://*/find*"],
+      "include_globs": ["http://*/find*","http://*/a/*"],
       "js":      ["list-find-items.js","find.js"]
     },
     {
