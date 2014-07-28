@@ -11,7 +11,7 @@ On all pages:
 * `g`      Go to category...
 * `u`      Go to user page
 
-On list/find pages:
+On list/find/author-id pages:
 * `j`/`k`    Steps down/up through the abstracts
 * `a`/`A`    Open the selected abstract in the current/new window
 * `p`/`P`    Open the selected PDF in the current/new window
