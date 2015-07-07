@@ -103,8 +103,16 @@ function siteKeyHandler(event) {
 my.openURL =
 function openURL(url, inNewWin) {
   if(inNewWin) {
-    var newWin = window.open(url, '_blank');
-    newWin.blur();
+    // In Chrome 44, window.open started creating a new
+    // window instead of new tab.
+    // See crbug 506638, https://code.google.com/p/chromium/issues/detail?id=506638
+    // which is marked as WontFix
+    // This is a workaround
+    var e = document.createElement("a");
+    e.href = url; e.target = "_blank";
+    document.body.appendChild(e);
+    e.click();
+    document.body.removeChild(e);
     window.focus();
   } else window.location = url;
 };
