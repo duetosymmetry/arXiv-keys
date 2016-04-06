@@ -3,7 +3,7 @@
 
   "name": "arXiv keys",
   "description": "Adds keyboard navigation keys to the arXiv.",
-  "version": "0.9.2.7",
+  "version": "0.9.2.8",
 
   "icons": {  "48": "icon48.png",
              "128": "icon128.png" },
@@ -29,7 +29,7 @@
                   "*://arxiv-web3.library.cornell.edu/*",
                   "*://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
-      "include_globs": ["http://*/abs/*"],
+      "include_globs": ["*://*/abs/*"],
       "js":      ["abs.js"]
     },
     {
@@ -40,7 +40,7 @@
                   "*://arxiv-web3.library.cornell.edu/*",
                   "*://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
-      "include_globs": ["http://*/list*"],
+      "include_globs": ["*://*/list*"],
       "js":      ["list-find-items.js","list.js"]
     },
     {
@@ -51,7 +51,7 @@
                   "*://arxiv-web3.library.cornell.edu/*",
                   "*://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
-      "include_globs": ["http://*/find*","http://*/a/*"],
+      "include_globs": ["*://*/find*","*://*/a/*"],
       "js":      ["list-find-items.js","find.js"]
     },
     {
@@ -62,7 +62,7 @@
                   "*://arxiv-web3.library.cornell.edu/*",
                   "*://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
-      "include_globs": ["http://*/catchup*"],
+      "include_globs": ["*://*/catchup*"],
       "js":      ["list-find-items.js"]
     }
   ]
