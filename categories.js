@@ -33,6 +33,7 @@ var categories = [
   "physics",
   "physics.acc-ph",
   "physics.ao-ph",
+  "physics.app-ph",
   "physics.atom-ph",
   "physics.atm-clus",
   "physics.bio-ph",
