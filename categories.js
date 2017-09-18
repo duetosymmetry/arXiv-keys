@@ -155,5 +155,9 @@ var categories = [
   "stat.ML",
   "stat.ME",
   "stat.OT",
-  "stat.TH"
+  "stat.TH",
+  "eess",
+  "eess.AS",
+  "eess.IV",
+  "eess.SP"
 ];
