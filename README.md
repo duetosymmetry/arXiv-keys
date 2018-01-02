@@ -1,7 +1,9 @@
 arXiv-keys
 ==========
 
-Chrome extension which adds keyboard navigation keys to the arXiv, available [here](https://chrome.google.com/webstore/detail/arxiv-keys/fkjjdlbhliopfhgddlpoggpmpgjfaojd).
+Chrome extension/Firefox addon which adds keyboard navigation keys to
+the arXiv. [Chrome extension available here](https://chrome.google.com/webstore/detail/arxiv-keys/fkjjdlbhliopfhgddlpoggpmpgjfaojd),
+[Firefox addon available here](https://addons.mozilla.org/en-US/firefox/addon/arxiv-keys/).
 
 Less clicking, more science! Now you can navigate the arXiv with the keyboard instead of the mouse. This extension adds several "navkey" navigation keys / keyboard shortcuts to arXiv pages.
 
