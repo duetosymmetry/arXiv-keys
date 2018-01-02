@@ -18,6 +18,17 @@
 var items;
 var selectedItem = 0;
 
+// See https://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport/7557433#7557433
+function isElementInViewport (el) {
+  var rect = el.getBoundingClientRect();
+
+  return (
+    rect.top >= 0 && rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+  );
+};
+
 function setSelected(i, doScroll) {
   if ((i<0) || (i>= items.length))
     return;
@@ -34,9 +45,9 @@ function setSelected(i, doScroll) {
   items[i].className += " selected";
   selectedItem = i;
 
-  if (doScroll) {
+  if (doScroll && !isElementInViewport(items[i])) {
     // The name of the anchor is item<i+1>.
-    items[i].scrollIntoViewIfNeeded();
+    items[i].scrollIntoView({behavior: "smooth"});
   };
 
 };

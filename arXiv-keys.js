@@ -81,7 +81,7 @@ function siteKeyHandler(event) {
   if(ignoreKeyboard(event.target))
     return;
 
-  var c = String.fromCharCode(event.keyCode);
+  var c = event.key;
   var isShifted = event.shiftKey;
 
   // Step through the key map and find a match
