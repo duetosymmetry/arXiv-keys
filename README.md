@@ -1,3 +1,8 @@
+[//]: # (Distributed under the MIT License.)
+[//]: # (See LICENSE for details.)
+
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
+
 arXiv-keys
 ==========
 
