@@ -3,7 +3,7 @@
 
   "name": "arXiv keys",
   "description": "Adds keyboard navigation keys to the arXiv.",
-  "version": "0.9.2.12",
+  "version": "0.9.3",
 
   "icons": {  "48": "icon48.png",
              "128": "icon128.png" },
@@ -17,8 +17,8 @@
                   "*://arxiv-web3.library.cornell.edu/*",
                   "*://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
-      "css":     ["blitzer.css","arXiv-keys.css"],
-      "js":      ["jquery-2.0.0.min.js","jquery-ui-git.js",
+      "css":     ["jquery-ui.min.css","arXiv-keys.css"],
+      "js":      ["jquery-3.3.1.min.js","jquery-ui.min.js",
                   "categories.js","goto-box.js","arXiv-keys.js"]
     },
     {
@@ -53,6 +53,17 @@
       "exclude_matches": ["*://*/*.pdf"],
       "include_globs": ["*://*/find*","*://*/a/*"],
       "js":      ["list-find-items.js","find.js"]
+    },
+    {
+      "matches": ["*://arxiv.org/*",
+                  "*://*.arxiv.org/*",
+                  "*://arxiv-web1.library.cornell.edu/*",
+                  "*://arxiv-web2.library.cornell.edu/*",
+                  "*://arxiv-web3.library.cornell.edu/*",
+                  "*://xxx.lanl.gov/*"],
+      "exclude_matches": ["*://*/*.pdf"],
+      "include_globs": ["*://*/search*"],
+      "js":      ["search.js"]
     },
     {
       "matches": ["*://arxiv.org/*",

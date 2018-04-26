@@ -60,3 +60,7 @@
   float: right;
   margin: 5px 2px;
 }
+
+.ui-autocomplete-input, .ui-menu, .ui-menu-item, .ui-state-active {
+  border-radius: 5px;
+}

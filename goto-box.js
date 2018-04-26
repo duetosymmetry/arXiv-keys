@@ -76,12 +76,12 @@ function showGotoBox() {
   $("#gotoError").hide();
   gotoInput.val("");
   gotoBox.style.display = "block";
-  gotoInput.focus();
+  gotoInput[0].focus();
 };
 
 function hideGotoBox() {
   gotoBox.style.display = "none";
-  gotoInput.blur();
+  gotoInput[0].blur();
   document.body.focus();
 };
 
