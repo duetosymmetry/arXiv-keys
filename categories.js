@@ -161,5 +161,7 @@ var categories = [
   "eess.IV",
   "eess.SP",
   "econ",
-  "econ.EM"
+  "econ.EM",
+  "econ.GN",
+  "econ.TH"
 ];
