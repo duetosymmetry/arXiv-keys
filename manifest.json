@@ -3,7 +3,7 @@
 
   "name": "arXiv keys",
   "description": "Adds keyboard navigation keys to the arXiv.",
-  "version": "0.9.3",
+  "version": "0.9.4",
 
   "icons": {  "48": "icon48.png",
              "128": "icon128.png" },
@@ -73,7 +73,7 @@
                   "*://arxiv-web3.library.cornell.edu/*",
                   "*://xxx.lanl.gov/*"],
       "exclude_matches": ["*://*/*.pdf"],
-      "include_globs": ["*://*/catchup*"],
+      "include_globs": ["*://*/catchup*", "*://*/refs*", "*://*/cits*"],
       "js":      ["list-find-items.js"]
     }
   ]
