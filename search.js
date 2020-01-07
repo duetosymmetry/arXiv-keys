@@ -50,6 +50,9 @@ function setSelected(i, doScroll) {
     items[i].scrollIntoView({behavior: "smooth"});
   };
 
+  // Store this in sessionStorage
+  arXivKeys.setSessionSelected(i);
+
 };
 
 function openAbstract(inNewWin) {
@@ -94,8 +97,8 @@ function goUp() {
     items[i].onclick = makeSelect(i);
   };
 
-  // Make the first one be selected
-  setSelected(0,false);
+  // See if sessionStorage already has something stored for the selected item
+  setSelected(arXivKeys.getSessionSelected(),false);
 
   //////////////////////////////////////////////////////////////////////
   // next/prev page code

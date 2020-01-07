@@ -144,6 +144,23 @@ function followLinkEl(el) {
 };
 
 //////////////////////////////////////////////////////////////////////
+// For sessionStorage stuff
+//////////////////////////////////////////////////////////////////////
+
+// This is for sessionStorage access
+my.selectedKey = 'AK.selectedItem-' + location.pathname + location.search;
+
+my.setSessionSelected = function setSessionSelected(i) {
+  sessionStorage.setItem(my.selectedKey, i);
+};
+
+// This defaults to 0 if not found in sessionStorage
+my.getSessionSelected = function getSessionSelected() {
+  var savedValue = sessionStorage.getItem(my.selectedKey);
+  return savedValue ? Number(savedValue) : 0;
+};
+
+//////////////////////////////////////////////////////////////////////
 // Install
 //////////////////////////////////////////////////////////////////////
 
