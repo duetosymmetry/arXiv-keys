@@ -3,7 +3,13 @@
 
   "name": "arXiv keys",
   "description": "Adds keyboard navigation keys to the arXiv.",
-  "version": "0.9.7",
+  "version": "0.9.8",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{c7430e1b-46c2-40dc-9547-58ed476fa849}"
+    }
+  },
 
   "icons": {  "48": "icon48.png",
              "128": "icon128.png" },
@@ -75,6 +81,17 @@
       "exclude_matches": ["*://*/*.pdf"],
       "include_globs": ["*://*/catchup*", "*://*/refs*", "*://*/cits*"],
       "js":      ["list-find-items.js"]
+    },
+    {
+      "matches": ["*://arxiv.org/*",
+                  "*://*.arxiv.org/*",
+                  "*://arxiv-web1.library.cornell.edu/*",
+                  "*://arxiv-web2.library.cornell.edu/*",
+                  "*://arxiv-web3.library.cornell.edu/*",
+                  "*://xxx.lanl.gov/*"],
+      "exclude_matches": ["*://*/*.pdf"],
+      "include_globs": ["*://*/html/*"],
+      "js":      ["latexml.js"]
     }
   ]
 }

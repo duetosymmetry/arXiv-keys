@@ -15,14 +15,23 @@
 (function(){
 
   var PDFLink = null;
+  var HTMLLink = null;
   var sidebarLinks = document.getElementsByClassName("full-text")[0].getElementsByTagName("a");
-  for (var i = 0; i < sidebarLinks.length; i++)
+  for (var i = 0; i < sidebarLinks.length; i++) {
     if (sidebarLinks[i].accessKey == "f")
       PDFLink = sidebarLinks[i];
+    if (sidebarLinks[i].id == "latexml-download-link")
+      HTMLLink = sidebarLinks[i];
+  }
 
 function openPDF(inNewWin) {
   if (PDFLink)
     arXivKeys.openURL(PDFLink.href, inNewWin);
+};
+
+function openHTML(inNewWin) {
+  if (HTMLLink)
+    arXivKeys.openURL(HTMLLink.href, inNewWin);
 };
 
 var links = document.getElementsByClassName("prevnext")[0]
@@ -48,6 +57,7 @@ function goNextPage(isShifted) {
 
 // Install key handlers
 arXivKeys.keyMap["OPENPDF"].act  = openPDF;
+arXivKeys.keyMap["OPENHTML"].act  = openHTML;
 arXivKeys.keyMap["PREVPAGE"].act = goPrevPage;
 arXivKeys.keyMap["NEXTPAGE"].act = goNextPage;
 

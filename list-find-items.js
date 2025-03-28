@@ -85,6 +85,10 @@ function openPDF(inNewWin) {
   openTitleLink("Download PDF",inNewWin);
 };
 
+function openHTML(inNewWin) {
+  openTitleLink("View HTML",inNewWin);
+};
+
 function goDown() {
   if(selectedItem < items.length-1)
     setSelected(selectedItem + 1, true);
@@ -105,6 +109,7 @@ function goUp() {
   arXivKeys.keyMap["PREVABS"].act  = goUp;
   arXivKeys.keyMap["OPENABS"].act  = openAbstract;
   arXivKeys.keyMap["OPENPDF"].act  = openPDF;
+  arXivKeys.keyMap["OPENHTML"].act = openHTML;
 
   // Add click handlers
   var makeSelect = function(I) {

@@ -37,8 +37,9 @@ my.keyMap = {
   USERPAGE: new kEnt("u","Go to user page",         goUserPage),
   NEXTABS:  new kEnt("j","List page: Next abstract"),
   PREVABS:  new kEnt("k","List page: Previous abstract"),
-  OPENABS:  new kEnt("a/A","List page: Open abstract in current/new window"),
+  OPENABS:  new kEnt("a/A","Open abstract in current/new window"),
   OPENPDF:  new kEnt("p/P","Open PDF in current/new window"),
+  OPENHTML: new kEnt("h/H","Open HTML in current/new window"),
   PREVPAGE: new kEnt("[","List page: Previous abstracts page<br>Abstract page: Browse previous"),
   NEXTPAGE: new kEnt("]","List page: Next abstracts page<br>Abstract page: Browse next")
 };
