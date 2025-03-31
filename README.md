@@ -21,9 +21,11 @@ On all pages:
 On list/search/author-id/catchup/refs/cits pages:
 * `j`/`k`    Steps down/up through the abstracts
 * `a`/`A`    Open the selected abstract in the current/new window
-* `p`/`P`    Open the selected PDF in the current/new window
+* `p`/`P`    Open PDF version of selected paper in the current/new window
+* `h`/`H`    Open HTML version of selected paper in the current/new window
 * `[`/`]`    Previous/next page of abstracts
 
 On abstract pages:
-* `p`/`P`    Open the selected PDF in the current/new window
+* `p`/`P`    Open PDF version of selected paper in the current/new window
+* `h`/`H`    Open HTML version of selected paper in the current/new window
 * `[`/`]`    Browse previous/next abstract
