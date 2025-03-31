@@ -15,12 +15,16 @@
 // Keep the namespace clean. Nothing to export.
 (function(){
 
-  var curPageElement =
-    document.getElementsByTagName("small")[0]
-    .getElementsByTagName("b")[0];
+  var prevPageElement = null;
+  var nextPageElement = null;
 
-  var prevPageElement = curPageElement.previousElementSibling;
-  var nextPageElement = curPageElement.nextElementSibling;
+  var pagingSpans = document.getElementsByClassName("paging")[0].getElementsByTagName("span");
+  if (pagingSpans.length > 0) {
+    var curPageElement = pagingSpans[0];
+
+    prevPageElement = curPageElement.previousElementSibling;
+    nextPageElement = curPageElement.nextElementSibling;
+  }
 
 function goPrevPage() {
   arXivKeys.followLinkEl(prevPageElement);

@@ -14,7 +14,7 @@
 //   function followLinkEl(el)
 var arXivKeys = (function($){
 
-  var my = {};
+var my = {};
 
 // Construct a key entry object, used both for testing keys
 // and for displaying help. The first character of displayChar

@@ -16,7 +16,6 @@
 
   var PDFLink = null;
   var AbsLink = null;
-  console.log(document.getElementsByClassName("html-header-nav"));
   var navbarLinks = document.getElementsByClassName("html-header-nav")[1].getElementsByTagName("a");
   for (var i = 0; i < navbarLinks.length; i++) {
     if (navbarLinks[i].innerText.includes('PDF'))
